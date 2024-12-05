@@ -1,0 +1,7 @@
+# print a message
+echo "Running pre-commit hook 🚀"
+echo "Compiling the code 📦🔨"
+cd web
+npx tsc
+echo "Formatting and linting the code 👷🏼‍♂️🛠️"
+npx lint-staged
