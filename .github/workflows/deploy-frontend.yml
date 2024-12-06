@@ -1,4 +1,4 @@
-name: Build frontend 
+name: Deploy frontend to s3
 
 on:
   push:
