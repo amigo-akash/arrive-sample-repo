@@ -1,4 +1,4 @@
-name: Deploy React App to CloudFront
+name: Deploy React App to AWS CloudFront
 
 on:
   push:
