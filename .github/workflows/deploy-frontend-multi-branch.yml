@@ -17,7 +17,7 @@ jobs:
           - branch: refs/heads/main
             environment: production
     if: ${{ github.ref == matrix.branch}}
-    environment: ${{ matrix.environment }}
+    environment: production
 
     steps:
     - uses: actions/checkout@v3
