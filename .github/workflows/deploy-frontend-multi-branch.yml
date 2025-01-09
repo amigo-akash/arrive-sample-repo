@@ -9,16 +9,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - branch: refs/heads/dev
-            environment: development
-          - branch: refs/heads/main
-            environment: production
-    if: ${{ github.ref == matrix.branch }}
     env:
-      ENVIRONMENT: ${{ matrix.environment }}
+      ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'PROD' || github.ref == 'refs/heads/dev' && 'DEV' || 'UNKNOWN' }}
 
     steps:
     - uses: actions/checkout@v3
