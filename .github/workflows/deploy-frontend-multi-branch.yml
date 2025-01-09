@@ -1,0 +1,36 @@
+name: Deploy React App to CloudFront
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - branch: refs/heads/dev
+            environment: development
+          - branch: refs/heads/main
+            environment: production
+    if: github.ref == matrix.branch
+    environment: ${{ matrix.environment }}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build React app
+      run: |
+        echo " branch=${matrix.branch}"
+        echo "environment=${environment}"
