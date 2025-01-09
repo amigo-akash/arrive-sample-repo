@@ -16,7 +16,7 @@ jobs:
             environment: development
           - branch: refs/heads/main
             environment: production
-    if: github.ref == ref/heads/main
+    if: github.ref == 'ref/heads/main'
     environment: production
 
     steps:
@@ -34,4 +34,4 @@ jobs:
     - name: Conditional Branch Deployment
       run: |
         echo "Deploying branch: ${{ github.ref }}"
-        echo "Deploying to environment ${{ environment }}"
+        echo "Deploying to environment ${{ matrix.environment }}"
