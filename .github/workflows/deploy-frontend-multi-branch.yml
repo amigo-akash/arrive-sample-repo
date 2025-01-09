@@ -29,7 +29,7 @@ jobs:
       run: npm ci
 
     - name: Conditional Branch Deployment
-      if: if: ${{ github.ref == matrix.branch}}
+      if: ${{ github.ref == matrix.branch}}
       run: |
         echo "Deploying branch: ${{ matrix.branch }}"
         echo "Deploying to environment=${matrix.environment}"
