@@ -16,9 +16,6 @@ jobs:
             environment: development
           - branch: refs/heads/main
             environment: production
-    if: github.ref == matrix.branch
-    environment: ${{ matrix.environment }}
-
     steps:
     - uses: actions/checkout@v3
 
@@ -28,9 +25,11 @@ jobs:
         node-version: '16'
 
     - name: Install dependencies
+      working-directory: ./web
       run: npm ci
 
-    - name: Build React app
-      run: |
-        echo " branch=${matrix.branch}"
-        echo "environment=${environment}"
+    - name: Conditional Branch Deployment
+        if: ${{ github.ref == format('refs/heads/{0}', matrix.branch) }}
+        run: |
+          echo "Deploying branch: ${{ matrix.branch }}"
+          echo "Deploying to environment=${matrix.environment}"
