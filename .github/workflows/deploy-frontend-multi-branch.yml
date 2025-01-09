@@ -34,4 +34,4 @@ jobs:
     - name: Conditional Branch Deployment
       run: |
         echo "Deploying branch: ${{ matrix.branch }}"
-        echo "Deploying to environment ${{ environment }}"
+        echo "Deploying to environment ${{ matrix.environment }}"
