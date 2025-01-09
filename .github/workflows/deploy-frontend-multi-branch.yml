@@ -16,7 +16,7 @@ jobs:
             environment: development
           - branch: refs/heads/main
             environment: production
-    if: ${{ github.ref == matrix.branch}}
+    if: ${{ github.ref == ref/heads/main}}
     environment: production
 
     steps:
